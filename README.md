@@ -40,7 +40,7 @@ lan_IP=<lan-ip-address>
 lan_PATH=/path/to/repo
 ```
 
-Add as many targets as you need. Names are case-insensitive.
+Add as many targets as you need. Target names must match exactly between the CLI argument and the `<NAME>_*` prefix in `.env`.
 
 ## Usage
 

@@ -43,7 +43,7 @@ if [[ -z "$TARGET_NAME" ]]; then
     exit 1
 fi
 
-PREFIX="${TARGET_NAME^^}"
+PREFIX="$TARGET_NAME"
 TARGET_USER=$(eval echo "\${${PREFIX}_USER}")
 TARGET_IP=$(eval echo "\${${PREFIX}_IP}")
 TARGET_PATH=$(eval echo "\${${PREFIX}_PATH}")
