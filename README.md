@@ -63,3 +63,11 @@ Always excluded:
 - `build/`, `install/`, `log/` — colcon build artifacts
 - `*.log` — build/run logs
 - `__pycache__/`, `*.pyc` — Python bytecode cache
+
+If the parent repo contains `.rsyncignore`, its rsync exclude patterns are also
+applied to both push and pull. `.gitignore` is not read by rsync. Use a leading
+`/` to anchor a pattern at the parent repo root, or an unanchored directory name
+such as `.venv/` to exclude it at any depth.
+
+Excluded destination files are also protected from `--delete`. Adding an
+exclusion leaves any previously synced copies in place; it does not remove them.

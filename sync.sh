@@ -7,6 +7,7 @@
 #
 # EXCLUDED FROM SYNC
 #   .git/  .env  build/  install/  log/  *.log  __pycache__/  *.pyc
+#   Additional repo-specific patterns from <repo-root>/.rsyncignore, if present.
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_ROOT="$( cd "${SCRIPT_DIR}/.." && pwd )"
@@ -70,6 +71,10 @@ RSYNC_OPTS=(
     --exclude='__pycache__/'
     --exclude='*.pyc'
 )
+
+if [[ -f "${REPO_ROOT}/.rsyncignore" ]]; then
+    RSYNC_OPTS+=(--exclude-from="${REPO_ROOT}/.rsyncignore")
+fi
 
 REMOTE="${TARGET_USER}@${TARGET_IP}:${TARGET_PATH}/"
 
